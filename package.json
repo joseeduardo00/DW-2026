@@ -1,0 +1,21 @@
+{
+  "name": "meu-servidor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch server_http.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joseeduardo00/DW-2026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/joseeduardo00/DW-2026/issues"
+  },
+  "homepage": "https://github.com/joseeduardo00/DW-2026#readme"
+}
