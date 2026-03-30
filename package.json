@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch server_http.js"
+    "dev": "node --watch server.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/joseeduardo00/DW-2026/issues"
   },
-  "homepage": "https://github.com/joseeduardo00/DW-2026#readme"
+  "homepage": "https://github.com/joseeduardo00/DW-2026#readme",
+  "dependencies": {
+    "fastify": "^5.8.4"
+  }
 }
