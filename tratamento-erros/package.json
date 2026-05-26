@@ -1,0 +1,12 @@
+{
+  "name": "tarefas-tratamento-erros",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "fastify": "^4.26.0"
+  }
+}
