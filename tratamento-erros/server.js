@@ -1,15 +1,11 @@
-// @file: src/server.js
 import Fastify from 'fastify'
-import tarefaRoutes from './tratamento-erros/src/features/tarefas/tarefa.routes.js'
-import { AppError } from './src/errors/AppError.js' // ◄ IMPORTANTE: Não esqueça de importar o AppError aqui!
+import { AppError } from './src/errors/AppError.js'
 
-const server = Fastify({ logger: true })
+// Cria o servidor
+const server = Fastify({ logger: false }) // Mudamos para false para a tela ficar mais limpa
 
-// =======================================================
-// ESSA É A NOSSA REDE DE SEGURANÇA GLOBAL
-// =======================================================
+// REDE DE SEGURANÇA GLOBAL
 server.setErrorHandler((error, request, reply) => {
-  // Se o erro for do tipo AppError (nossa regra de negócio violada)
   if (error instanceof AppError) {
     return reply.status(error.statusCode).send({
       status: 'error',
@@ -17,7 +13,6 @@ server.setErrorHandler((error, request, reply) => {
     })
   }
 
-  // Se for um erro misterioso do próprio javascript ou banco de dados
   console.error('🔥 ERRO INTERNO NÃO ESPERADO:', error)
 
   return reply.status(500).send({
@@ -25,11 +20,17 @@ server.setErrorHandler((error, request, reply) => {
     message: 'Internal Server Error'
   })
 })
-// =======================================================
 
-server.register(tarefaRoutes)
-
+// Função para ligar o servidor
 const start = async () => {
-  await server.listen({ port: 3000 })
+  try {
+    await server.listen({ port: 3000 })
+    // ◄ ESSA LINHA ABAIXO VAI FAZER O LINK APARECER NA SUA TELA!
+    console.log('🚀 Servidor rodando com sucesso em: http://localhost:3000')
+  } catch (err) {
+    console.error('Erro ao ligar o servidor:', err)
+    process.exit(1)
+  }
 }
+
 start()
